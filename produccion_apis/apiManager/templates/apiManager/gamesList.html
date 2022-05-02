@@ -1,0 +1,122 @@
+{% extends 'apiManager/base.html' %} {%block content%} {% load static %}
+<body>
+  <div class="container">
+    <div class="row pt-4">
+      <div class="col-auto col-sm-3">
+        <div class="dropdown">
+          <label>Plataforma:</label>
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Todas las plataformas
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            <li><h6 class="dropdown-header">Buscar por plataforma:</h6></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/'%}active{%endif%}" href="{% url 'Games' 'all' %}">Todas las plataformas</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/pc/'%}active{%endif%}" href="{% url 'Games' 'pc' %}">Windows (PC)</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/browser/'%}active{%endif%}" href="{% url 'Games' 'browser' %}">Navegador (WEB)</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-auto col-sm-3">
+        <div class="dropdown">
+          <label>Género/Tag:</label>
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Todos los géneros
+          </button>
+          <ul class="dropdown-menu scrollable-menu" aria-labelledby="dropdownMenuButton2">
+            <li><h6 class="dropdown-header">Buscar por género:</h6></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/mmo/' or request.path == '/games/pc/mmo/' or request.path == '/games/browser/mmo/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='mmo' %} ">MMO</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/mmorpg/' or request.path == '/games/pc/mmorpg/' or request.path == '/games/browser/mmorpg/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='mmorpg' %} ">MMORPG</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/shooter/' or request.path == '/games/pc/shooter/' or request.path == '/games/browser/shooter/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='shooter' %} ">Disparos</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/strategy/' or request.path == '/games/pc/strategy/' or request.path == '/games/browser/strategy/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='strategy' %} ">Estrategia</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/moba/' or request.path == '/games/pc/moba/' or request.path == '/games/browser/moba/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='moba' %} ">Moba</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/card/' or request.path == '/games/pc/card/' or request.path == '/games/browser/card/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='card' %} ">Cartas</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/racing/' or request.path == '/games/pc/racing/' or request.path == '/games/browser/racing/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='racing' %} ">Carreras</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/sports/' or request.path == '/games/pc/sports/' or request.path == '/games/browser/sports/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='sports' %} ">Deportes</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/social/' or request.path == '/games/pc/social/' or request.path == '/games/browser/social/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='social' %} ">Social</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/fighting/' or request.path == '/games/pc/fighting/' or request.path == '/games/browser/fighting/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='fighting' %} ">Lucha</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/mmofps/' or request.path == '/games/pc/mmofps/' or request.path == '/games/browser/mmofps/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='mmofps' %} ">MMOFPS</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/strategy/' or request.path == '/games/pc/action-rpg/' or request.path == '/games/browser/action-rpg/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='action-rpg' %} ">Acción RPG</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/sandbox/' or request.path == '/games/pc/sandbox/' or request.path == '/games/browser/sandbox/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='sandbox' %} ">Sandbox</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/open-word/' or request.path == '/games/pc/open-word/' or request.path == '/games/browser/open-word/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='open-word' %} ">Mundo Abierto</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/survival/' or request.path == '/games/pc/survival/' or request.path == '/games/browser/survival/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='survival' %} ">Supervivencia</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/battle-royale/' or request.path == '/games/pc/battle-royale/' or request.path == '/games/browser/battle-royale/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='battle-royale' %} ">Battle Royale</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/mmotps/' or request.path == '/games/pc/mmotps/' or request.path == '/games/browser/mmotps/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='mmotps' %} ">MMOTPS</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/anime/' or request.path == '/games/pc/anime/' or request.path == '/games/browser/anime/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='anime' %} ">Anime</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/pvp/' or request.path == '/games/pc/pvp/' or request.path == '/games/browser/pvp/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='pvp' %} ">PVP</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/pve/' or request.path == '/games/pc/pve/' or request.path == '/games/browser/pve/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='pve' %} ">PVE</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/pixel/' or request.path == '/games/pc/pixel/' or request.path == '/games/browser/pixel/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='pixel' %} ">Pixel</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/mmorts/' or request.path == '/games/pc/mmorts/' or request.path == '/games/browser/mmorts/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='mmorts' %} ">MMORTS</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/fantasy/' or request.path == '/games/pc/fantasy/' or request.path == '/games/browser/fantasy/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='fantasy' %} ">Fantasía</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/sci-fi/' or request.path == '/games/pc/sci-fi/' or request.path == '/games/browser/sci-fi/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='sci-fi' %} ">Ciencia Ficción</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/action/' or request.path == '/games/pc/action/' or request.path == '/games/browser/action/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='action' %} ">Acción</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/voxel/' or request.path == '/games/pc/voxel/' or request.path == '/games/browser/voxel/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='voxel' %} ">Voxel</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/turn-based/' or request.path == '/games/pc/turn-based/' or request.path == '/games/browser/turn-based/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='turn-based' %} ">Basado en Turnos</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/first-person/' or request.path == '/games/pc/first-person/' or request.path == '/games/browser/first-person/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='first-person' %} ">Primera Persona</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/third-person/' or request.path == '/games/pc/third-person/' or request.path == '/games/browser/third-person/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='third-person' %} ">Tercera Persona</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/top-down/' or request.path == '/games/pc/top-down/' or request.path == '/games/browser/top-down/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='top-down' %} ">Vista Aérea</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/3d/' or request.path == '/games/pc/3d/' or request.path == '/games/browser/3d/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='3d' %} ">3D</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/2d/' or request.path == '/games/pc/2d/' or request.path == '/games/browser/2d/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='2d' %} ">2D</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/tank/' or request.path == '/games/pc/tank/' or request.path == '/games/browser/tank/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='tank' %} ">Tanques</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/space/' or request.path == '/games/pc/space/' or request.path == '/games/browser/space/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='space' %} ">Espacio</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/sailing/' or request.path == '/games/pc/sailing/' or request.path == '/games/browser/sailing/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='sailing' %} ">Navegación</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/side-scroller/' or request.path == '/games/pc/side-scroller/' or request.path == '/games/browser/side-scroller/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='side-scroller' %} ">Desplazamiento Lateral</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/superhero/' or request.path == '/games/pc/superhero/' or request.path == '/games/browser/superhero/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='superhero' %} ">Superhéroe</a></li>
+            <li><a class="dropdown-item {% if request.path == '/games/all/permadeath/' or request.path == '/games/pc/permadeath/' or request.path == '/games/browser/permadeath/'%}active{%endif%}" href="{% url 'GamesG' plataform=plataformGenre genre='permadeath' %} ">Muerte Permanente</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-auto col-sm-3">
+        <div class="dropdown">
+          <label>Ordenar Por:</label>
+          <button class="btn btn-primary btn-sm dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown" aria-expanded="false">
+            Relevancia
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton2">
+            <li><h6 class="dropdown-header">Ordenar por:</h6></li>
+            <li><a class="dropdown-item {% if '?sort_by=relevance' in request.get_full_path %} active {%endif%}" href="?sort_by=relevance">Relevancia</a></li>
+            <li><a class="dropdown-item {% if '?sort_by=popularity' in request.get_full_path %} active {%endif%}" href="?sort_by=popularity">Popularity</a></li>
+            <li><a class="dropdown-item {% if '?sort_by=relase-date' in request.get_full_path %} active {%endif%}" href="?sort_by=relase-date">Relase Date</a></li>
+            <li><a class="dropdown-item {% if '?sort_by=alphabetical' in request.get_full_path %} active {%endif%}" href="?sort_by=alphabetical">Alphabetical</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <hr />
+  </div>
+  <div class="container">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+      {% for game in games%}
+      <div class="col">
+        <div class="card h-100">
+          <img src="{{game.thumbnail}}" class="card-img-top" alt="..." />
+          <div class="card-body">
+            <p class="card-text bg-light">
+              <a
+                href="{% url 'Game' game.id %}"
+                class="stretched-link text-decoration-none link-dark"
+                style="position: relative"
+              >
+                <h5 class="card-title text-truncate">{{game.title}}</h5>
+                <p class="card-text text-truncate">
+                  {{game.short_description}}
+                </p>
+              </a>
+            </p>
+            <p class="card-text">
+              <a href="#" class="stretched-link" style="position: relative">
+                <a class="link-secondary" href="##"
+                  ><i class="fa-solid fa-plus"></i
+                ></a>
+                <span class="badge bg-info text-dark float-end"
+                  >{{game.genre}}</span
+                >
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</body>
+{% endblock %}

@@ -1,0 +1,53 @@
+{% extends 'apiManager/base.html' %}
+
+{%block content%}
+{% load static %}
+<body>
+    <div class="container">
+        <h1 class="h1 mt-3">Buscador de juegos: </h1>
+        <form class="d-flex pt-4" method='POST'>
+            {% csrf_token %}
+            <input class="form-control me-2" type="search" placeholder="Buscar" name='Search' aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Buscar</button>
+        </form>
+    <hr/>
+    </div>
+    {% if games %}
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-lg-4 g-3">
+          {% for game in games%}
+          <div class="col">
+            <div class="card h-100">
+              <img src="{{game.thumbnail}}" class="card-img-top" alt="..." />
+              <div class="card-body">
+                <p class="card-text bg-light">
+                  <a
+                    href="{% url 'Game' game.id %}"
+                    class="stretched-link text-decoration-none link-dark"
+                    style="position: relative"
+                  >
+                    <h5 class="card-title text-truncate">{{game.title}}</h5>
+                    <p class="card-text text-truncate">
+                      {{game.short_description}}
+                    </p>
+                  </a>
+                </p>
+                <p class="card-text">
+                  <a href="#" class="stretched-link" style="position: relative">
+                    <a class="link-secondary" href="##"
+                      ><i class="fa-solid fa-plus"></i
+                    ></a>
+                    <span class="badge bg-info text-dark float-end"
+                      >{{game.genre}}</span
+                    >
+                  </a>
+                </p>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    {% endif %}
+</body>
+{% endblock %}

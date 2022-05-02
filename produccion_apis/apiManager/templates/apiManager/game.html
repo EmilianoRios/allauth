@@ -1,0 +1,81 @@
+{% extends 'apiManager/base.html' %} {%block content%} {% load static %}
+
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="d-grid gap-2 col-11 mx-auto m-4">
+          <img src="{{game.thumbnail}}" class="img-thumbnail md-3" alt="...">
+          <a class="btn btn-primary" href="{{game.game_url}}" role="button">Jugar</a>
+        </div>
+      </div>
+      <div class="col-md-8 mt-3">
+        <h1 class="h1">{{game.title}}</h1>
+        <h3 class="h3">Acerca de {{game.title}}</h3>
+        <hr />
+        <p>{{game.description}}</p>
+        <h3>Información adicional</h3>
+        <hr />
+        <div class="row row-cols-3">
+          <div clas="col">
+            <span>Titulo:</span>
+            <p>{{game.title}}</p>
+          </div>
+          <div clas="col">
+            <span>Desarrollador:</span>
+            <p>{{game.developer}}</p>
+          </div>
+          <div clas="col">
+            <span>Editora:</span>
+            <p>{{game.publisher}}</p>
+          </div>
+          <div clas="col">
+            <span>Fecha de Lanzamiento:</span>
+            <p>{{game.release_date}}</p>
+          </div>
+          <div clas="col">
+            <span>Género:</span>
+            <p>{{game.genre}}</p>
+          </div>
+          <div clas="col">
+            <span>Plataforma:</span>
+            <p>{{game.platform}}</p>
+          </div>
+        </div>
+        <h3>Capturas de Pantalla</h3>
+        <hr>
+        <div class="row row-cols-2">
+          {% for image in game.screenshots %}
+          <div clas="col">
+            <img src="{{image.image}}" class="img-thumbnail" alt="...">
+          </div>
+          {% endfor %}
+        </div>
+        <h3>Requerimientos mínimos del sistema</h3>
+        <hr>
+        <div class="row row-cols-2">
+          {% for requeriment,value in game.minimum_system_requirements.items %}
+          <div clas="col">
+            <span>{{requeriment}}:</span>
+            <p>{{value}}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</body>
+{% endblock %}
+
+{% comment %} <p>{{game.status}}</p>
+<p>{{game.short_description}}</p>
+<p>{{game.description}}</p>
+<p>{{game.genre}}</p>
+<p>{{game.plataform}}</p>
+<p>{{game.publisher}}</p>
+<p>{{game.developer}}</p>
+<p>{{game.release_date}}</p>
+{% for requeriment,value in game.minimum_system_requirements.items %}
+<p>{{requeriment}}: {{value}}</p>
+{% endfor %} {% endcomment %}
