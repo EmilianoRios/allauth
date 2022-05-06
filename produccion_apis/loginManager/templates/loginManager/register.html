@@ -1,0 +1,40 @@
+{% extends 'apiManager/base.html' %}
+
+{%block content%}
+{% load static %}
+<body>
+    {% if messages %}
+        {% for message in messages %}
+            <h6 class="h6 text-center bg-success">{{message}}</h6>
+        {% endfor %}
+    {% endif %} 
+    <div class="container">
+        <div class="mx-auto mt-5 mb-5 p-4 border rounded" style="width: 500px;">
+            <form  method="post">
+                {% csrf_token %}
+                <p class="h1 mb-4 text-center">Registro</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    {{ form.username }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    {{ form.email }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    {{ form.password1 }}
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    {{ form.password2 }}
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" type="submit" id="submit">Registrarse</button>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+</body>
+{% endblock %}

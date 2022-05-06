@@ -21,4 +21,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('menu.urls')),
     path('freetogame/', include('apiManager.urls')),
+    path('login/', include('loginManager.urls')),
+    path('accounts/', include('allauth.urls')),
 ]

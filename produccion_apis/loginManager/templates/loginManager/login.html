@@ -1,0 +1,29 @@
+{% extends 'apiManager/base.html' %}
+
+{%block content%}
+{% load static %}
+{% load socialaccount %}
+
+<body>
+    <div class="container">
+        <div class="mx-auto mt-5 mb-5 p-4 border rounded" style="width: 500px;">
+            <form  method="post">
+                {% csrf_token %}
+                <p class="h1 mb-4 text-center">Login</p>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="text" name="username" class="form-control" placeholder="Usuario" aria-label="Username" aria-describedby="basic-addon1">
+                </div>
+                <div class="input-group mb-3">
+                    <span class="input-group-text" id="basic-addon1">@</span>
+                    <input type="password" name="password" class="form-control" placeholder="Contraseña" aria-label="Password" aria-describedby="basic-addon1">
+                </div>
+                <div class="d-grid gap-2 col-6 mx-auto">
+                    <button class="btn btn-primary" type="submit" id="submit">Ingresar</button>
+                </div>
+                <a title="Google" class="socialaccount_provider google" href="{% provider_login_url 'google' %}" >Google</a>
+            </form>
+        </div>
+    </div>
+</body>
+{% endblock %}

@@ -59,27 +59,23 @@
         {% if not user.is_authenticated %}
         <a
           class="nav-link link-secondary {% if request.path == '/login/'%}active{%endif%}"
-          href="#"
+          href="{% url 'LogIn' %}"
           >Log In</a
         >
-        {% comment %} {% url 'LogIn' %} {% endcomment %}
         {% endif %}
         {% if user.is_authenticated %}
         <a 
           type="button"
-          class="btn btn-outline-primary" href="#">Log Out</a>
-          {% comment %} {% url 'LogOut' %} {% endcomment %}
+          class="btn btn-outline-primary" href="{% url 'LogOut' %}">Log Out</a>
         {% endif %}
         {% if not user.is_authenticated %}
         <a
           type="button"
           class="btn btn-outline-primary {% if request.path == '/register/'%}active{%endif%}"
-          href="#"
+          href="{% url 'Register' %}"
           >Register</a
         >
-        {% comment %} {% url 'Register' %} {% endcomment %}
         {% endif %}
-        <a type="button" class="btn-close btn-close-white p-2" href="{% url 'Menu' %}" disabled aria-label="Close"></a>
       </div>
     </div>
   </nav>
